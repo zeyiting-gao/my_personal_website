@@ -85,6 +85,8 @@ main {
 .section {
   text-align: center;
   max-width: 720px;
+  width: 100%;
+  animation: section-in 0.7s ease both;
 }
 
 .name {
@@ -263,7 +265,18 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(12, 12, 14, 0.85);
   text-align: left;
+  opacity: 0;
+  transform: translateY(-12px);
+  animation: reveal-down 0.7s ease forwards;
 }
+
+.project-card:nth-child(1) { animation-delay: 0.05s; }
+.project-card:nth-child(2) { animation-delay: 0.12s; }
+.project-card:nth-child(3) { animation-delay: 0.19s; }
+.project-card:nth-child(4) { animation-delay: 0.26s; }
+.project-card:nth-child(5) { animation-delay: 0.33s; }
+.project-card:nth-child(6) { animation-delay: 0.4s; }
+.project-card:nth-child(7) { animation-delay: 0.47s; }
 
 .project-card h3 {
   margin: 0 0 8px;
@@ -283,6 +296,39 @@ main {
   color: var(--ink);
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.section-wide {
+  max-width: 980px;
+}
+
+.about-layout {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+
+.about-text {
+  text-align: left;
+}
+
+.about-photo {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  justify-self: center;
+}
+
+@media (min-width: 900px) {
+  .about-layout {
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  }
+
+  .about-photo {
+    justify-self: end;
+  }
 }
 
 .placeholder {
@@ -305,6 +351,24 @@ main {
   33% { color: var(--accent); }
   66% { color: var(--accent-2); }
   100% { color: var(--ink); }
+}
+
+@keyframes section-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes reveal-down {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 720px) {
