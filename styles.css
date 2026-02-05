@@ -251,6 +251,40 @@ main {
   color: var(--ink);
 }
 
+.project-list {
+  display: grid;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.project-card {
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(12, 12, 14, 0.85);
+  text-align: left;
+}
+
+.project-card h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  font-family: "Fraunces", "Times New Roman", serif;
+  color: var(--ink);
+}
+
+.project-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.project-desc {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
 .placeholder {
   padding: 16px 20px;
   border-radius: 16px;
