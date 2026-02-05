@@ -4,10 +4,22 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Zeyiting Gao</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Space+Grotesk:wght@300;500;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --bg: #f4f3ef;
-        --text: #1f1f1f;
+        --bg: #f7f2ea;
+        --ink: #1f1f1f;
+        --accent: #ff7a59;
+        --accent-2: #2a6fdb;
+        --paper: #ffffff;
+        --muted: #5c5c5c;
+        --shadow: 0 20px 50px rgba(16, 22, 26, 0.14);
+        --radius: 20px;
       }
 
       * {
@@ -17,50 +29,254 @@
       html, body {
         height: 100%;
         margin: 0;
+        scroll-behavior: smooth;
       }
 
       body {
+        background:
+          radial-gradient(circle at 12% 18%, rgba(255, 210, 196, 0.65), transparent 45%),
+          radial-gradient(circle at 88% 12%, rgba(181, 214, 255, 0.6), transparent 45%),
+          linear-gradient(180deg, #fff7f0 0%, var(--bg) 40%, #f6f6f6 100%);
+        color: var(--ink);
+        font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+        line-height: 1.5;
+      }
+
+      .page {
+        min-height: 100%;
         display: grid;
-        place-items: center;
-        background: radial-gradient(circle at 20% 20%, #ffffff, var(--bg));
-        color: var(--text);
-        font-family: "Charter", "Georgia", "Times New Roman", serif;
+        grid-template-rows: auto 1fr auto;
       }
 
-      h1 {
-        font-size: clamp(2.5rem, 6vw, 5rem);
-        font-weight: 600;
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.72);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .nav-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 16px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-weight: 500;
+        font-size: 1.1rem;
         letter-spacing: 0.5px;
-        margin: 0;
-        opacity: 0;
-        animation:
-          fade-in 1.2s ease-out 0.2s forwards,
-          color-shift 6s ease-in-out 0.2s infinite;
       }
 
-      @keyframes fade-in {
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--ink);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-size: 0.95rem;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        background: var(--paper);
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus {
+        transform: translateY(-2px);
+        border-color: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      main {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 80px 24px 120px;
+        display: grid;
+        gap: 80px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 28px;
+        align-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      }
+
+      .hero h1 {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-size: clamp(2.8rem, 6vw, 5.2rem);
+        font-weight: 500;
+        margin: 0;
+        line-height: 1.05;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        color: var(--muted);
+        max-width: 28rem;
+      }
+
+      .hero-card {
+        background: var(--paper);
+        border-radius: var(--radius);
+        padding: 28px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      .section {
+        display: grid;
+        gap: 20px;
+      }
+
+      .section h2 {
+        font-family: "Fraunces", "Times New Roman", serif;
+        font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+        margin: 0;
+      }
+
+      .section p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 1.05rem;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .pill {
+        border-radius: 999px;
+        padding: 8px 14px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: var(--paper);
+        font-size: 0.95rem;
+      }
+
+      .ideas-card {
+        padding: 24px;
+        border-radius: var(--radius);
+        background: linear-gradient(130deg, rgba(255, 214, 184, 0.8), rgba(204, 224, 255, 0.7));
+        border: 1px dashed rgba(0, 0, 0, 0.25);
+        font-weight: 500;
+      }
+
+      footer {
+        text-align: center;
+        padding: 24px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .fade-up {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: fade-up 0.9s ease-out forwards;
+      }
+
+      .fade-up.delay-1 { animation-delay: 0.2s; }
+      .fade-up.delay-2 { animation-delay: 0.4s; }
+      .fade-up.delay-3 { animation-delay: 0.6s; }
+
+      @keyframes fade-up {
         to {
           opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      @keyframes color-shift {
-        0% {
-          color: #1f1f1f;
-        }
-        33% {
-          color: #2b5d8a;
-        }
-        66% {
-          color: #8a5d2b;
-        }
-        100% {
-          color: #1f1f1f;
+      @media (max-width: 720px) {
+        .nav-inner {
+          flex-direction: column;
+          align-items: flex-start;
         }
       }
     </style>
   </head>
   <body>
-    <h1>Zeyiting Gao</h1>
+    <div class="page">
+      <nav class="nav">
+        <div class="nav-inner">
+          <div class="brand">Zeyiting Gao</div>
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#research">Research</a>
+            <a href="#ideas">Ideas</a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section id="home" class="hero">
+          <div class="fade-up">
+            <h1>Psychology student</h1>
+            <p>
+              Exploring moral psychology and quantitative methods through research,
+              creative inquiry, and thoughtful storytelling.
+            </p>
+          </div>
+          <div class="hero-card fade-up delay-1">
+            <p><strong>Current focus</strong></p>
+            <p>
+              Moral judgment, decision patterns, and the way data can reveal the
+              stories behind human behavior.
+            </p>
+            <div class="pill-row">
+              <div class="pill">Moral Psychology</div>
+              <div class="pill">Quantitative Methods</div>
+              <div class="pill">Behavioral Data</div>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="section fade-up delay-2">
+          <h2>About</h2>
+          <p>
+            I am a psychology student drawn to the intersection of research,
+            ethics, and how we make sense of complex decisions. I care about
+            clarity, empathy, and precision in the way we study people.
+          </p>
+        </section>
+
+        <section id="research" class="section fade-up delay-3">
+          <h2>Research</h2>
+          <p>
+            My work centers on moral psychology and quantitative methods, with
+            an emphasis on rigorous analysis and human-centered questions.
+          </p>
+          <div class="pill-row">
+            <div class="pill">Moral Reasoning</div>
+            <div class="pill">Survey Design</div>
+            <div class="pill">Statistics</div>
+          </div>
+        </section>
+
+        <section id="ideas" class="section fade-up delay-3">
+          <h2>Ideas</h2>
+          <p>
+            Short posts, film notes, and creative experiments will live here.
+          </p>
+          <div class="ideas-card">Updating in progress...</div>
+        </section>
+      </main>
+
+      <footer>
+        Thanks for visiting.
+      </footer>
+    </div>
   </body>
 </html>
