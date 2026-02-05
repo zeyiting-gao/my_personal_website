@@ -269,6 +269,24 @@ main {
   align-items: start;
 }
 
+.contact-left {
+  display: grid;
+  gap: 28px;
+}
+
+.contact-right {
+  align-self: stretch;
+}
+
+.contact-bullets {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 8px;
+  font-size: 1.05rem;
+}
+
 .contact-section {
   text-align: left;
 }
@@ -276,7 +294,8 @@ main {
 .section-title {
   margin-bottom: 22px;
   text-align: center;
-  font-size: 3rem;
+  font-size: clamp(2.8rem, 5vw, 3.8rem);
+  animation: color-shift 6s ease-in-out 0.2s infinite;
 }
 
 footer {
@@ -376,14 +395,14 @@ footer {
 
 .project-card h3 {
   margin: 0 0 8px;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-family: "Fraunces", "Times New Roman", serif;
-  color: var(--ink);
+  color: var(--accent);
 }
 
 .project-meta {
   font-size: 0.95rem;
-  color: var(--muted);
+  color: var(--ink);
   margin-bottom: 8px;
 }
 
@@ -402,6 +421,7 @@ footer {
 .page-title {
   font-size: clamp(3.4rem, 6vw, 4.8rem);
   line-height: 1.05;
+  animation: color-shift 6s ease-in-out 0.2s infinite;
 }
 
 .about-layout {
@@ -446,7 +466,7 @@ footer {
 
 .education-title {
   text-align: left;
-  font-size: clamp(2.8rem, 5vw, 3.8rem);
+  font-size: 2.6rem;
 }
 
 .education-list {

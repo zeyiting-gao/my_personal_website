@@ -1,49 +1,46 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact · Zeyiting Gao</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Space+Grotesk:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="page">
-      <header>
-        <div class="brand">Zeyiting Gao</div>
-        <nav>
-          <a class="nav-btn" href="index.html">Home</a>
-          <a class="nav-btn" href="about.html">About</a>
-          <a class="nav-btn" href="research.html">Research</a>
-          <a class="nav-btn" href="ideas.html">Ideas</a>
-          <a class="nav-btn active" href="contact.html">Contact</a>
-        </nav>
-      </header>
 
-      <main>
-        <section class="section contact-section">
-          <h2 class="section-title">Contact</h2>
-          <div class="contact-layout">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact · Zeyiting Gao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Space+Grotesk:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="brand">Zeyiting Gao</div>
+      <nav>
+        <a class="nav-btn" href="index.html">Home</a>
+        <a class="nav-btn" href="about.html">About</a>
+        <a class="nav-btn" href="research.html">Research</a>
+        <a class="nav-btn" href="ideas.html">Ideas</a>
+        <a class="nav-btn active" href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section contact-section">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-layout">
+          <div class="contact-left">
             <div class="contact-panel contact-card">
               <h3>Contact Information</h3>
               <div class="contact-info">
                 <div>Email: <a href="mailto:zeyitinggao@gmail.com">zeyitinggao@gmail.com</a></div>
                 <div>The Chinese University of Hong Kong, Shenzhen</div>
-                <a
-                  class="contact-icon"
-                  href="https://www.linkedin.com/in/zeyiting-gao-6a90a5372/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a class="contact-icon" href="https://www.linkedin.com/in/zeyiting-gao-6a90a5372/" target="_blank"
+                  rel="noopener noreferrer">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path
-                      d="M20.45 20.45h-3.55v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5H9.46V9h3.4v1.56h.05c.47-.9 1.6-1.85 3.3-1.85 3.52 0 4.17 2.32 4.17 5.33v6.4zM5.34 7.44a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.78 24h20.44C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z"
-                    />
+                      d="M20.45 20.45h-3.55v-5.4c0-1.29-.03-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.5H9.46V9h3.4v1.56h.05c.47-.9 1.6-1.85 3.3-1.85 3.52 0 4.17 2.32 4.17 5.33v6.4zM5.34 7.44a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.78C.8 0 0 .77 0 1.72v20.56C0 23.23.8 24 1.78 24h20.44C23.2 24 24 23.23 24 22.28V1.72C24 .77 23.2 0 22.22 0z" />
                   </svg>
                   LinkedIn
                 </a>
@@ -51,70 +48,80 @@
             </div>
 
             <div class="contact-panel contact-card">
-              <h3>Send a message</h3>
-              <form
-                class="contact-form"
-                id="contact-form"
-                action="https://formspree.io/f/mojnaddr"
-                method="POST"
-                novalidate
-              >
-                <div>
-                  <label for="first-name">First Name</label>
-                  <input id="first-name" name="first-name" type="text" required />
-                </div>
-                <div>
-                  <label for="last-name">Last Name</label>
-                  <input id="last-name" name="last-name" type="text" required />
-                </div>
-                <div>
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" required />
-                </div>
-                <div>
-                  <label for="subject">Subject</label>
-                  <input id="subject" name="subject" type="text" required />
-                </div>
-                <div>
-                  <label for="message">Leave a message</label>
-                  <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit">Submit</button>
-              </form>
+              <h3>When to Reach Out</h3>
+              <ul class="contact-bullets">
+                <li>Research collaboration</li>
+                <li>Share ideas on my posts</li>
+                <li>If you want me to share thoughts on a specific topic</li>
+                <li>Connect 🤝</li>
+              </ul>
             </div>
           </div>
-        </section>
-      </main>
-      <footer>© 2026 by Zeyiting Gao</footer>
-    </div>
 
-    <script>
-      const form = document.getElementById("contact-form");
-      const fields = form.querySelectorAll("input, textarea");
+          <div class="contact-panel contact-card contact-right">
+            <h3>Send a message</h3>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojnaddr" method="POST"
+              novalidate>
+              <div>
+                <label for="first-name">First Name</label>
+                <input id="first-name" name="first-name" type="text" required />
+              </div>
+              <div>
+                <label for="last-name">Last Name</label>
+                <input id="last-name" name="last-name" type="text" required />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required />
+              </div>
+              <div>
+                <label for="subject">Subject</label>
+                <input id="subject" name="subject" type="text" required />
+              </div>
+              <div>
+                <label for="message">Leave a message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      © 2026 by Zeyiting Gao
+      <div>Last update: Feb 5, 2026</div>
+    </footer>
+  </div>
 
-      const messages = {
-        "first-name": "Please enter your first name.",
-        "last-name": "Please enter your last name.",
-        email: "Please enter a valid email address.",
-        subject: "Please enter a subject.",
-        message: "Please enter a message."
-      };
+  <script>
+    const form = document.getElementById("contact-form");
+    const fields = form.querySelectorAll("input, textarea");
 
-      fields.forEach((field) => {
-        field.addEventListener("invalid", () => {
-          field.setCustomValidity(messages[field.id] || "This field is required.");
-        });
-        field.addEventListener("input", () => {
-          field.setCustomValidity("");
-        });
+    const messages = {
+      "first-name": "Please enter your first name.",
+      "last-name": "Please enter your last name.",
+      email: "Please enter a valid email address.",
+      subject: "Please enter a subject.",
+      message: "Please enter a message."
+    };
+
+    fields.forEach((field) => {
+      field.addEventListener("invalid", () => {
+        field.setCustomValidity(messages[field.id] || "This field is required.");
       });
-
-      form.addEventListener("submit", (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          form.reportValidity();
-        }
+      field.addEventListener("input", () => {
+        field.setCustomValidity("");
       });
-    </script>
-  </body>
+    });
+
+    form.addEventListener("submit", (event) => {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        form.reportValidity();
+      }
+    });
+  </script>
+</body>
+
 </html>
