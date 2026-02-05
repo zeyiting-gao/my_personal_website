@@ -36,33 +36,19 @@ body.home::before {
   position: fixed;
   inset: -20%;
   background:
-    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.12), transparent 52%),
-    radial-gradient(circle at 80% 28%, rgba(201, 176, 114, 0.2), transparent 58%),
-    radial-gradient(circle at 42% 82%, rgba(110, 163, 255, 0.18), transparent 54%);
-  opacity: 1;
-  filter: blur(2px);
-  animation: drift-glow 14s ease-in-out infinite alternate;
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.08), transparent 52%),
+    radial-gradient(circle at 80% 28%, rgba(201, 176, 114, 0.14), transparent 58%),
+    radial-gradient(circle at 42% 82%, rgba(110, 163, 255, 0.12), transparent 54%);
+  opacity: 0.65;
+  filter: blur(0px);
+  animation: drift-glow 20s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: -1;
 }
-
-body.home::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 60%),
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.03) 0px,
-      rgba(255, 255, 255, 0.03) 1px,
-      transparent 1px,
-      transparent 3px
-    );
-  mix-blend-mode: screen;
-  opacity: 0.25;
-  pointer-events: none;
-  z-index: -1;
+@media (prefers-reduced-motion: reduce) {
+  body.home::before {
+    animation: none;
+  }
 }
 
 .page {
