@@ -438,6 +438,60 @@ footer {
   line-height: 1.6;
 }
 
+.idea-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.idea-card {
+  padding: 18px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(12, 12, 14, 0.85);
+  text-align: left;
+}
+
+.idea-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+  font-family: "Fraunces", "Times New Roman", serif;
+  color: var(--accent);
+}
+
+.idea-meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.idea-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.idea-card p {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.inline-link {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 176, 114, 0.5);
+}
+
+.inline-link:hover,
+.inline-link:focus {
+  color: var(--accent-2);
+  border-bottom-color: rgba(255, 255, 255, 0.7);
+}
+
 .section-wide {
   max-width: 1400px;
   width: min(1400px, 94vw);
