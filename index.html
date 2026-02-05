@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Zeyiting Gao</title>
+    <style>
+      :root {
+        --bg: #f4f3ef;
+        --text: #1f1f1f;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+        background: radial-gradient(circle at 20% 20%, #ffffff, var(--bg));
+        color: var(--text);
+        font-family: "Charter", "Georgia", "Times New Roman", serif;
+      }
+
+      h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin: 0;
+        opacity: 0;
+        animation:
+          fade-in 1.2s ease-out 0.2s forwards,
+          color-shift 6s ease-in-out 0.2s infinite;
+      }
+
+      @keyframes fade-in {
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes color-shift {
+        0% {
+          color: #1f1f1f;
+        }
+        33% {
+          color: #2b5d8a;
+        }
+        66% {
+          color: #8a5d2b;
+        }
+        100% {
+          color: #1f1f1f;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Zeyiting Gao</h1>
+  </body>
+</html>
