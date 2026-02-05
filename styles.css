@@ -26,6 +26,45 @@ body {
   line-height: 1.6;
 }
 
+body.home {
+  position: relative;
+  overflow-x: hidden;
+}
+
+body.home::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.12), transparent 52%),
+    radial-gradient(circle at 80% 28%, rgba(201, 176, 114, 0.2), transparent 58%),
+    radial-gradient(circle at 42% 82%, rgba(110, 163, 255, 0.18), transparent 54%);
+  opacity: 1;
+  filter: blur(2px);
+  animation: drift-glow 14s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body.home::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05), transparent 60%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      rgba(255, 255, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: screen;
+  opacity: 0.25;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .page {
   min-height: 100%;
   display: grid;
@@ -550,6 +589,18 @@ footer {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes drift-glow {
+  0% {
+    transform: translate3d(-2%, -1%, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(1%, 2%, 0) scale(1.03);
+  }
+  100% {
+    transform: translate3d(2%, -2%, 0) scale(1.02);
   }
 }
 
