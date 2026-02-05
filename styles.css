@@ -116,6 +116,86 @@ main {
   font-size: 1.05rem;
 }
 
+.contact-info {
+  display: grid;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 1.05rem;
+  color: var(--muted);
+}
+
+.contact-info a {
+  color: var(--accent-2);
+  text-decoration: none;
+}
+
+.contact-info a:hover,
+.contact-info a:focus {
+  text-decoration: underline;
+}
+
+.contact-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: var(--accent-2);
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.contact-form {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
+
+.contact-form label {
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(12, 12, 14, 0.85);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form button {
+  justify-self: center;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: transparent;
+  color: var(--accent);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form button:hover,
+.contact-form button:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
 .pill-row {
   display: flex;
   justify-content: center;
