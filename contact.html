@@ -52,7 +52,13 @@
 
             <div class="contact-panel contact-card">
               <h3>Send a message</h3>
-              <form class="contact-form" id="contact-form" novalidate>
+              <form
+                class="contact-form"
+                id="contact-form"
+                action="https://formspree.io/f/mojnaddr"
+                method="POST"
+                novalidate
+              >
                 <div>
                   <label for="first-name">First Name</label>
                   <input id="first-name" name="first-name" type="text" required />
