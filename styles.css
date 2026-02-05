@@ -10,7 +10,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
@@ -85,7 +86,7 @@ main {
 
 .section {
   text-align: center;
-  max-width: 860px;
+  max-width: 980px;
   width: 100%;
   animation: section-in 0.7s ease both;
 }
@@ -145,6 +146,7 @@ main {
   height: 20px;
   fill: currentColor;
 }
+
 .cta-card {
   display: inline-flex;
   align-items: center;
@@ -177,13 +179,13 @@ main {
 .section p {
   margin: 0;
   color: var(--muted);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 .contact-info {
   display: grid;
   gap: 8px;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   color: var(--muted);
 }
 
@@ -341,13 +343,33 @@ footer {
   animation: reveal-down 0.7s ease forwards;
 }
 
-.project-card:nth-child(1) { animation-delay: 0.05s; }
-.project-card:nth-child(2) { animation-delay: 0.12s; }
-.project-card:nth-child(3) { animation-delay: 0.19s; }
-.project-card:nth-child(4) { animation-delay: 0.26s; }
-.project-card:nth-child(5) { animation-delay: 0.33s; }
-.project-card:nth-child(6) { animation-delay: 0.4s; }
-.project-card:nth-child(7) { animation-delay: 0.47s; }
+.project-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.project-card:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.project-card:nth-child(3) {
+  animation-delay: 0.19s;
+}
+
+.project-card:nth-child(4) {
+  animation-delay: 0.26s;
+}
+
+.project-card:nth-child(5) {
+  animation-delay: 0.33s;
+}
+
+.project-card:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.project-card:nth-child(7) {
+  animation-delay: 0.47s;
+}
 
 .project-card h3 {
   margin: 0 0 8px;
@@ -365,12 +387,16 @@ footer {
 .project-desc {
   margin: 0;
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
 .section-wide {
-  max-width: 1120px;
+  max-width: 1240px;
+}
+
+.page-title {
+  font-size: 5.1rem;
 }
 
 .about-layout {
@@ -390,6 +416,48 @@ footer {
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
   justify-self: center;
+}
+
+.about-block {
+  margin-bottom: 60px;
+}
+
+.education-block {
+  margin-top: 20px;
+  padding: 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(201, 176, 114, 0.35);
+  background: linear-gradient(135deg, rgba(20, 20, 24, 0.95), rgba(10, 10, 12, 0.95));
+  text-align: left;
+}
+
+.education-block h3 {
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  font-family: "Fraunces", "Times New Roman", serif;
+  color: var(--accent);
+}
+
+.education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  color: var(--ink);
+}
+
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 1.05rem;
+}
+
+.education-years {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 @media (min-width: 900px) {
@@ -418,10 +486,21 @@ footer {
 }
 
 @keyframes color-shift {
-  0% { color: var(--ink); }
-  33% { color: var(--accent); }
-  66% { color: var(--accent-2); }
-  100% { color: var(--ink); }
+  0% {
+    color: var(--ink);
+  }
+
+  33% {
+    color: var(--accent);
+  }
+
+  66% {
+    color: var(--accent-2);
+  }
+
+  100% {
+    color: var(--ink);
+  }
 }
 
 @keyframes section-in {
@@ -429,6 +508,7 @@ footer {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
