@@ -112,6 +112,38 @@ main {
   justify-content: center;
 }
 
+.home-links {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 12, 14, 0.9);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.icon-link:hover,
+.icon-link:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+.icon-link svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
 .cta-card {
   display: inline-flex;
   align-items: center;
