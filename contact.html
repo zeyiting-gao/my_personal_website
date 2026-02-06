@@ -62,7 +62,7 @@
           <div class="contact-panel contact-card contact-right">
             <h3>Send a message</h3>
             <form class="contact-form" id="contact-form" action="https://formspree.io/f/mojnaddr" method="POST"
-              novalidate>
+              enctype="multipart/form-data" novalidate>
               <div>
                 <label for="first-name">First Name</label>
                 <input id="first-name" name="first-name" type="text" required />
@@ -83,6 +83,10 @@
                 <label for="message">Leave a message</label>
                 <textarea id="message" name="message" required></textarea>
               </div>
+              <div>
+                <label for="attachment">Attach a photo (optional, max 25 MB)</label>
+                <input id="attachment" name="attachment" type="file" accept="image/png,image/jpeg,image/webp" />
+              </div>
               <button type="submit">Submit</button>
             </form>
           </div>
@@ -98,13 +102,16 @@
   <script>
     const form = document.getElementById("contact-form");
     const fields = form.querySelectorAll("input, textarea");
+    const attachment = document.getElementById("attachment");
+    const MAX_FILE_SIZE_MB = 25;
 
     const messages = {
       "first-name": "Please enter your first name.",
       "last-name": "Please enter your last name.",
       email: "Please enter a valid email address.",
       subject: "Please enter a subject.",
-      message: "Please enter a message."
+      message: "Please enter a message.",
+      attachment: `Please choose a photo under ${MAX_FILE_SIZE_MB} MB.`
     };
 
     fields.forEach((field) => {
@@ -116,7 +123,23 @@
       });
     });
 
+    if (attachment) {
+      attachment.addEventListener("change", () => {
+        const [file] = attachment.files || [];
+        if (file && file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+          attachment.setCustomValidity(messages.attachment);
+          attachment.reportValidity();
+        } else {
+          attachment.setCustomValidity("");
+        }
+      });
+    }
+
     form.addEventListener("submit", (event) => {
+      if (attachment && attachment.files[0] && attachment.files[0].size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+        attachment.setCustomValidity(messages.attachment);
+      }
+
       if (!form.checkValidity()) {
         event.preventDefault();
         form.reportValidity();
