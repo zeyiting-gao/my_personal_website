@@ -17,13 +17,23 @@
   <div class="page">
     <header>
       <div class="brand">Zeyiting Gao</div>
-      <nav>
-        <a class="nav-btn" href="index.html">Home</a>
-        <a class="nav-btn" href="about.html">About</a>
-        <a class="nav-btn active" href="research.html">Research</a>
-        <a class="nav-btn" href="ideas.html">Ideas</a>
-        <a class="nav-btn" href="contact.html">Contact</a>
-      </nav>
+      <div class="header-actions">
+        <nav>
+          <a class="nav-btn" href="index.html">Home</a>
+          <a class="nav-btn" href="about.html">About</a>
+          <a class="nav-btn active" href="research.html">Research</a>
+          <a class="nav-btn" href="ideas.html">Ideas</a>
+          <a class="nav-btn" href="contact.html">Contact</a>
+        </nav>
+        <div class="emoji-wrapper">
+          <button type="button" class="emoji-trigger" id="emoji-trigger" aria-label="Choose emoji" aria-expanded="false">
+            😊
+          </button>
+          <div class="emoji-panel" id="emoji-panel" hidden>
+            <div class="emoji-grid" id="emoji-grid" role="listbox" aria-label="Emoji picker"></div>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -129,6 +139,7 @@
       <div>Last update: Feb 6, 2026</div>
     </footer>
   </div>
+  <script src="emoji.js"></script>
   <script>
     const toggleButton = document.querySelector("[data-project-toggle]");
     const extraProjects = document.querySelector("[data-project-extra]");

@@ -62,12 +62,21 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .brand {
   font-family: "Fraunces", "Times New Roman", serif;
   font-size: 1.1rem;
   font-weight: 600;
+}
+
+.header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 nav {
@@ -101,6 +110,77 @@ nav {
 .nav-btn.active {
   border-color: var(--accent);
   color: var(--accent);
+}
+
+.emoji-wrapper {
+  position: relative;
+}
+
+.emoji-trigger {
+  min-width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 12, 14, 0.92);
+  color: var(--ink);
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.emoji-trigger:hover,
+.emoji-trigger:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.5);
+  outline: none;
+}
+
+.emoji-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 10px);
+  width: min(420px, 92vw);
+  max-height: 320px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 10, 12, 0.95);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+  overflow-y: auto;
+  backdrop-filter: blur(8px);
+  z-index: 20;
+}
+
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 8px;
+}
+
+.emoji-cell {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(18, 18, 20, 0.9);
+  color: var(--ink);
+  font-size: 18px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+
+.emoji-cell:hover,
+.emoji-cell:focus {
+  transform: translateY(-1px);
+  border-color: var(--accent);
+  background: rgba(24, 24, 28, 0.95);
+  outline: none;
 }
 
 main {
