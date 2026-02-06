@@ -379,6 +379,19 @@ footer {
   margin-top: 18px;
 }
 
+.project-extra {
+  display: none;
+  gap: 16px;
+}
+
+.project-extra.is-open {
+  display: grid;
+}
+
+.project-toggle {
+  margin: 10px auto 0;
+}
+
 .project-card {
   padding: 16px 18px;
   border-radius: 16px;
