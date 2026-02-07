@@ -569,13 +569,13 @@ footer {
 }
 
 .comment-button {
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 6px 10px;
+  border-radius: 9px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(16, 16, 18, 0.92);
   color: var(--ink);
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -710,8 +710,8 @@ footer {
 
 .comment-toggle {
   justify-self: start;
-  padding: 6px 10px;
-  font-size: 0.85rem;
+  padding: 5px 9px;
+  font-size: 0.8rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(10, 10, 12, 0.9);
@@ -722,6 +722,29 @@ footer {
 
 .comment-toggle:hover,
 .comment-toggle:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+.comment-actions-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.comment-delete {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 10, 12, 0.9);
+  color: var(--muted);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-delete:hover,
+.comment-delete:focus {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
   outline: none;

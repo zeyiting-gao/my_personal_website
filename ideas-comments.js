@@ -6,6 +6,8 @@ import {
   query,
   orderBy,
   onSnapshot,
+  deleteDoc,
+  doc,
   serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
@@ -23,6 +25,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+let currentUserId = null;
 
 const modal = document.getElementById("comment-modal");
 const form = modal?.querySelector("form");
@@ -70,6 +73,21 @@ const renderSnapshot = (block, items) => {
       node.querySelector("[data-author]").textContent = item.author || "Anonymous";
       node.querySelector("[data-date]").textContent = formatDate(item.createdAt);
       node.querySelector("[data-text]").textContent = item.text;
+      const deleteBtn = node.querySelector("[data-delete]");
+      if (deleteBtn) {
+        if (item.uid && currentUserId && item.uid === currentUserId) {
+          deleteBtn.hidden = false;
+          deleteBtn.addEventListener("click", async () => {
+            try {
+              await deleteDoc(doc(db, "posts", item.postId, "comments", item.id));
+            } catch (err) {
+              console.error("Failed to delete comment", err);
+            }
+          });
+        } else {
+          deleteBtn.hidden = true;
+        }
+      }
       list.appendChild(node);
     });
   }
@@ -86,7 +104,11 @@ const subscribeToComments = () => {
     onSnapshot(
       q,
       (snapshot) => {
-        const items = snapshot.docs.map((doc) => doc.data());
+        const items = snapshot.docs.map((snap) => ({
+          ...snap.data(),
+          id: snap.id,
+          postId,
+        }));
         renderSnapshot(block, items);
       },
       (err) => {
@@ -124,11 +146,12 @@ const handleSubmit = async (event) => {
     await addDoc(collection(db, "posts", currentPostId, "comments"), {
       author,
       text,
+      uid: currentUserId,
       createdAt: serverTimestamp(),
     });
-    openStates.set(currentPostId, false);
+    openStates.set(currentPostId, true);
     const block = document.querySelector(`.comment-block[data-post-id="${currentPostId}"]`);
-    if (block) setBlockOpen(block, false);
+    if (block) setBlockOpen(block, true);
     closeModal();
   } catch (err) {
     console.error("Failed to post comment", err);
@@ -139,7 +162,8 @@ const handleSubmit = async (event) => {
 
 const init = async () => {
   try {
-    await signInAnonymously(auth);
+    const result = await signInAnonymously(auth);
+    currentUserId = result.user?.uid || null;
   } catch (err) {
     console.error("Anonymous auth failed", err);
   }
