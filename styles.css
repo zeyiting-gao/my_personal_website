@@ -591,6 +591,20 @@ footer {
   gap: 10px;
 }
 
+.comment-body {
+  display: grid;
+  gap: 10px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, opacity 0.35s ease;
+}
+
+.comment-block.is-open .comment-body {
+  max-height: 600px;
+  opacity: 1;
+}
+
 .comment-empty {
   color: var(--muted);
   font-size: 0.95rem;
@@ -630,7 +644,7 @@ footer {
 }
 
 .comment-modal {
-  width: min(480px, 92vw);
+  width: clamp(260px, 25vw, 420px);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.16);
   background: rgba(12, 12, 14, 0.96);
@@ -638,6 +652,7 @@ footer {
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.65);
   display: grid;
   gap: 12px;
+  animation: modal-in 0.25s ease;
 }
 
 .comment-modal h3 {
@@ -691,6 +706,59 @@ footer {
 .comment-error {
   color: #ffb4b4;
   font-size: 0.9rem;
+}
+
+.comment-toggle {
+  justify-self: start;
+  padding: 6px 10px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(10, 10, 12, 0.9);
+  color: var(--muted);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment-toggle:hover,
+.comment-toggle:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+dialog.comment-modal::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+  animation: modal-backdrop 0.25s ease;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes modal-backdrop {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comment-body,
+  .comment-modal,
+  dialog.comment-modal::backdrop {
+    transition: none;
+    animation: none;
+  }
 }
 
 .idea-card h3 {

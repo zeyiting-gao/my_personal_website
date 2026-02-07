@@ -31,6 +31,7 @@ const cancelBtn = modal?.querySelector('[data-action="cancel"]');
 const template = document.getElementById("comment-template");
 
 let currentPostId = null;
+const openStates = new Map();
 
 const formatDate = (value) => {
   if (!value) return "Just now";
@@ -39,22 +40,43 @@ const formatDate = (value) => {
   return Number.isNaN(asDate.getTime()) ? "Just now" : asDate.toLocaleString();
 };
 
+const setBlockOpen = (block, isOpen) => {
+  const body = block.querySelector("[data-comment-body]");
+  const toggle = block.querySelector('[data-action="toggle-comments"]');
+  block.classList.toggle("is-open", isOpen);
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.textContent = isOpen ? "Hide comments" : "Show comments";
+  }
+  if (body) {
+    if (isOpen) {
+      body.style.maxHeight = `${body.scrollHeight}px`;
+    } else {
+      body.style.maxHeight = "0px";
+    }
+  }
+};
+
 const renderSnapshot = (block, items) => {
   const list = block.querySelector("[data-comments]");
   const empty = block.querySelector("[data-empty]");
   list.innerHTML = "";
   if (!items.length) {
     empty.hidden = false;
-    return;
+  } else {
+    empty.hidden = true;
+    items.forEach((item) => {
+      const node = template.content.cloneNode(true);
+      node.querySelector("[data-author]").textContent = item.author || "Anonymous";
+      node.querySelector("[data-date]").textContent = formatDate(item.createdAt);
+      node.querySelector("[data-text]").textContent = item.text;
+      list.appendChild(node);
+    });
   }
-  empty.hidden = true;
-  items.forEach((item) => {
-    const node = template.content.cloneNode(true);
-    node.querySelector("[data-author]").textContent = item.author || "Anonymous";
-    node.querySelector("[data-date]").textContent = formatDate(item.createdAt);
-    node.querySelector("[data-text]").textContent = item.text;
-    list.appendChild(node);
-  });
+
+  const postId = block.dataset.postId;
+  const isOpen = openStates.get(postId) === true;
+  setBlockOpen(block, isOpen);
 };
 
 const subscribeToComments = () => {
@@ -104,6 +126,9 @@ const handleSubmit = async (event) => {
       text,
       createdAt: serverTimestamp(),
     });
+    openStates.set(currentPostId, false);
+    const block = document.querySelector(`.comment-block[data-post-id="${currentPostId}"]`);
+    if (block) setBlockOpen(block, false);
     closeModal();
   } catch (err) {
     console.error("Failed to post comment", err);
@@ -126,12 +151,39 @@ const init = async () => {
     });
   });
 
+  document.querySelectorAll('[data-action="toggle-comments"]').forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const block = btn.closest(".comment-block");
+      if (!block) return;
+      const postId = block.dataset.postId;
+      const nextState = !(openStates.get(postId) === true);
+      openStates.set(postId, nextState);
+      setBlockOpen(block, nextState);
+    });
+  });
+
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) closeModal();
+  });
+
+  modal?.addEventListener("cancel", (event) => {
+    event.preventDefault();
+    closeModal();
+  });
+
   cancelBtn?.addEventListener("click", (e) => {
     e.preventDefault();
     closeModal();
   });
 
   form?.addEventListener("submit", handleSubmit);
+
+  window.addEventListener("resize", () => {
+    document.querySelectorAll(".comment-block.is-open").forEach((block) => {
+      const body = block.querySelector("[data-comment-body]");
+      if (body) body.style.maxHeight = `${body.scrollHeight}px`;
+    });
+  });
 
   subscribeToComments();
 };
