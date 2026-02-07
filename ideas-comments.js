@@ -75,18 +75,14 @@ const renderSnapshot = (block, items) => {
       node.querySelector("[data-text]").textContent = item.text;
       const deleteBtn = node.querySelector("[data-delete]");
       if (deleteBtn) {
-        if (item.uid && currentUserId && item.uid === currentUserId) {
-          deleteBtn.hidden = false;
-          deleteBtn.addEventListener("click", async () => {
-            try {
-              await deleteDoc(doc(db, "posts", item.postId, "comments", item.id));
-            } catch (err) {
-              console.error("Failed to delete comment", err);
-            }
-          });
-        } else {
-          deleteBtn.hidden = true;
-        }
+        deleteBtn.hidden = false;
+        deleteBtn.addEventListener("click", async () => {
+          try {
+            await deleteDoc(doc(db, "posts", item.postId, "comments", item.id));
+          } catch (err) {
+            console.error("Failed to delete comment", err);
+          }
+        });
       }
       list.appendChild(node);
     });
