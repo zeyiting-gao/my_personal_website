@@ -974,15 +974,8 @@ dialog.comment-modal::backdrop {
   nav {
     width: 100%;
     gap: 8px;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-bottom: 6px;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  nav::-webkit-scrollbar {
-    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
   main {
@@ -991,7 +984,7 @@ dialog.comment-modal::backdrop {
   }
 
   .section {
-    text-align: left;
+    text-align: center;
     gap: 14px;
   }
 
@@ -1005,6 +998,6 @@ dialog.comment-modal::backdrop {
 
   .home-links,
   .home-cta {
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
