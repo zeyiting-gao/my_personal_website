@@ -54,6 +54,14 @@
               train; it should be freakingly cold outside. To be honest, I enjoy more coldness outside instead of
               inside.
             </p>
+            <div class="comment-block" data-post-id="on-the-road">
+              <div class="comment-header">
+                <p class="comment-title">Comments</p>
+                <button class="comment-button" data-action="open-comment">Add comment</button>
+              </div>
+              <div class="comment-list" data-comments></div>
+              <p class="comment-empty" data-empty>Be the first to comment.</p>
+            </div>
           </article>
           <article class="idea-card">
             <div class="idea-header">
@@ -69,6 +77,14 @@
               this first
               post.
             </p>
+            <div class="comment-block" data-post-id="hello-world">
+              <div class="comment-header">
+                <p class="comment-title">Comments</p>
+                <button class="comment-button" data-action="open-comment">Add comment</button>
+              </div>
+              <div class="comment-list" data-comments></div>
+              <p class="comment-empty" data-empty>Be the first to comment.</p>
+            </div>
           </article>
         </div>
       </section>
@@ -78,7 +94,36 @@
       <div>Last update: Feb 6, 2026</div>
     </footer>
   </div>
+  <template id="comment-template">
+    <article class="comment-item">
+      <div class="comment-meta">
+        <span data-author></span>
+        <span data-date></span>
+      </div>
+      <p class="comment-text" data-text></p>
+    </article>
+  </template>
+
+  <dialog class="comment-modal" id="comment-modal">
+    <form class="comment-form" method="dialog">
+      <h3>Leave a comment</h3>
+      <p class="comment-error" data-error hidden></p>
+      <label>
+        Your name
+        <input type="text" name="author" placeholder="How should we call you?" autocomplete="name" required />
+      </label>
+      <label>
+        Comment
+        <textarea name="text" placeholder="Share your thoughts" required></textarea>
+      </label>
+      <div class="comment-actions">
+        <button type="button" class="comment-button comment-secondary" data-action="cancel">Cancel</button>
+        <button type="submit" class="comment-button" data-action="submit">Post</button>
+      </div>
+    </form>
+  </dialog>
   <script src="emoji.js"></script>
+  <script type="module" src="ideas-comments.js"></script>
 </body>
 
 </html>
